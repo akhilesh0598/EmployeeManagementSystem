@@ -54,5 +54,10 @@ namespace EMSystem.Repositories
             _context.Employees.Remove(employee);
             _context.SaveChanges();
         }
+        public List<Employee> GetByDepartmentId(int departmentId)
+        {
+            var employees = _context.Employees.Where(e=>e.DepartmentId==departmentId).ToList();
+            return employees;
+        }
     }
 }

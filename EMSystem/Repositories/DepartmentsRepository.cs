@@ -28,6 +28,11 @@ namespace EMSystem.Repositories
             var department = _context.Departments.FirstOrDefault(d => d.Id == departmentId);
             return department;
         }
+        public Department Get(string departmentName)
+        {
+            var department = _context.Departments.FirstOrDefault(d => d.Name == departmentName);
+            return department;
+        }
 
         public int Add(Department department)
         {

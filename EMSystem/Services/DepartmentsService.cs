@@ -40,6 +40,15 @@ namespace EMSystem.Services
             };
 
         }
+        public DepartmentResponse Get(string departmentName)
+        {
+            var department = _departmentsRepository.Get(departmentName);
+            return new DepartmentResponse()
+            {
+                Id = department.Id,
+                Name = department.Name
+            };
+        }
 
         public int Add(DepartmentRequest departmentRequest)
         {
@@ -73,5 +82,15 @@ namespace EMSystem.Services
                 return false;
             return true;
         }
+
+        public bool ValidateName(string departmentName)
+        {
+            var department = _departmentsRepository.Get(departmentName);
+            if (department == null)
+                return false;
+            return true;
+
+        }
+        
     }
 }

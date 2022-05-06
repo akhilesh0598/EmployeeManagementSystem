@@ -10,5 +10,6 @@ namespace EMSystem.Repositories
         Employee Get(int employeeId);
         List<Employee> GetAll();
         void Update(int employeeId, Employee employee);
+        List<Employee> GetByDepartmentId(int departmentId);
     }
 }

@@ -104,5 +104,21 @@ namespace EMSystem.Controllers
                 return NotFound(new { message = ex.Message });
             }
         }
+        // GET api/<EmployeesController>/5
+        [HttpGet("[action]/{departmentName}")]
+        public IActionResult GetByDepartmentName(string departmentName)
+        {
+            try
+            {
+                if (!_departmentsService.ValidateName(departmentName))
+                    throw new IdNotFoundException($"In Department Entity Name '{departmentName}' not found");
+                var employeeResponse = _employeesService.GetByDepartmentName(departmentName);
+                return Ok(employeeResponse);
+            }
+            catch (IdNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
     }
 }

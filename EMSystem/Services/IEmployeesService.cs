@@ -12,5 +12,6 @@ namespace EMSystem.Services
         List<EmployeeResponse> GetAll();
         void Update(int employeeId, EmployeeRequest employeeRequest);
         bool ValidateId(int employeeId);
+        List<EmployeeResponse> GetByDepartmentName(string departmentName);
     }
 }
