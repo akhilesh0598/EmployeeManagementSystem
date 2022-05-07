@@ -10,8 +10,8 @@
 *.userosscache
 *.sln.docstates
 .vs
-/bin
-/obj
+EMSystem/bin
+EMSystem/obj
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
