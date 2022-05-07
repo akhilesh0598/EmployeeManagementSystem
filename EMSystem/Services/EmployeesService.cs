@@ -99,18 +99,7 @@ namespace EMSystem.Services
         }
         public List<EmployeeResponse> GetByDepartmentName(string departmentName)
         {
-            var department = _departmentsService.Get(departmentName);
-            var employees = _employeesRepository.GetByDepartmentId(department.Id)
-                .Select(e => new EmployeeResponse()
-            {
-                Id = e.Id,
-                Name = e.Name,
-                Surname = e.Surname,
-                Qualification = e.Qualification,
-                Address = e.Address,
-                ContactNumber = e.ContactNumber,
-                Department = department
-            }).ToList(); ;
+            var employees = _employeesRepository.GetByDepartmentName(departmentName);
             return employees;
         }
     }

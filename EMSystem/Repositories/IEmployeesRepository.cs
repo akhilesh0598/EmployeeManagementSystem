@@ -1,4 +1,5 @@
 ﻿using EMSystem.Models.DB;
+using EMSystem.Models.Responses;
 using System.Collections.Generic;
 
 namespace EMSystem.Repositories
@@ -10,6 +11,7 @@ namespace EMSystem.Repositories
         Employee Get(int employeeId);
         List<Employee> GetAll();
         void Update(int employeeId, Employee employee);
-        List<Employee> GetByDepartmentId(int departmentId);
+
+        List<EmployeeResponse> GetByDepartmentName(string departmentName);
     }
 }

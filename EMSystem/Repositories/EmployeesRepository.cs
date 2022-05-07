@@ -1,5 +1,6 @@
 ﻿using EMSystem.Data;
 using EMSystem.Models.DB;
+using EMSystem.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,9 +55,24 @@ namespace EMSystem.Repositories
             _context.Employees.Remove(employee);
             _context.SaveChanges();
         }
-        public List<Employee> GetByDepartmentId(int departmentId)
+        public List<EmployeeResponse> GetByDepartmentName(string departmentName)
         {
-            var employees = _context.Employees.Where(e=>e.DepartmentId==departmentId).ToList();
+            var employees = _context.Employees.Join(_context.Departments,e=>e.DepartmentId
+            ,d=>d.Id,(e,d)=>
+            new EmployeeResponse{
+                Id = e.Id,
+                Name = e.Name,
+                Surname = e.Surname,
+                Qualification = e.Qualification,
+                Address = e.Address,
+                ContactNumber = e.ContactNumber,
+                Department = new DepartmentResponse
+                {
+                    Id=d.Id,
+                    Name=d.Name
+                }
+
+            }).Where(x => x.Department.Name==departmentName).ToList();
             return employees;
         }
     }
